@@ -19,6 +19,7 @@ router.get('/skills', isLoggedIn, async (req, res) => {
     const [data] = await con.execute(`
         SELECT id, title, description
         FROM skills
+        WHERE user_id = ${req.user.id}
     `);
     await con.end();
 
